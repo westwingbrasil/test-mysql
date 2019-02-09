@@ -1,0 +1,11 @@
+SELECT cliente.nome AS ClienteNome
+      ,cliente.sobrenome AS ClienteSobrenome
+      ,cliente.data_nascimento AS ClienteNascimento
+      ,casa.cor AS CasaCor
+      ,bairro.nome AS BairroNome
+      ,carro.modelo AS CarroModelo
+FROM cliente
+LEFT JOIN casa ON casa.fk_cliente = cliente.id_cliente
+INNER JOIN bairro ON bairro.id_bairro = casa.fk_bairro
+LEFT JOIN carro ON carro.fk_cliente = cliente.id_cliente
+ORDER BY cliente.data_nascimento ASC
