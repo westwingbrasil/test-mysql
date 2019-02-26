@@ -1,0 +1,11 @@
+SELECT CLI.nome     "CLIENTE",
+       C.cor        "COR CASA",
+       B.nome       "BAIRRO",
+       CAR.modelo   "MODELO CARRO"
+FROM cliente CLI 
+INNER JOIN casa C
+    ON (CLI.id_cliente = C.fk_cliente)
+INNER JOIN bairro B
+    ON (B.id_bairro = C.fk_bairro)
+INNER JOIN carro CAR
+    ON (CAR.fk_cliente = CLI.id_Cliente); 
