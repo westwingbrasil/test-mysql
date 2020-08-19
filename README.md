@@ -6,3 +6,12 @@ Fazer uma query que retorne o relatório abaixo:
 
 ## Requisitos:
 - Utilizar o dump desse projeto;
+
+
+
+## Resolução (query):
+- Utilizei a ferramenta MySQL Workbrench;
+- Feito a query no arquivo query.sql
+
+- segue esquema físico
+<img src="./Projeto-1/img/query_model_fisic.jpg">
