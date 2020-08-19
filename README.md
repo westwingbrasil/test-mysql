@@ -14,4 +14,4 @@ Fazer uma query que retorne o relatório abaixo:
 - Feito a query no arquivo query.sql
 
 - segue esquema físico
-<img src="./Projeto-1/img/query_model_fisic.jpg">
+<img src="\Desktop\Projeto-1\img\query_model_fisic.jpg">
