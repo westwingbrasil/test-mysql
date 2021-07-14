@@ -1,0 +1,5 @@
+select CONCAT (c.nome,' ',c.sobrenome) 'Nome Completo', ca.cor  'Cor da Casa', ba.nome 'Bairro', car.modelo 'Modelo Carro'
+from cliente as c
+inner join casa as ca on ca.fk_cliente = c.id_cliente  
+inner join carro as car on ca.fk_cliente = car.fk_cliente 
+inner join bairro as ba on ca.fk_bairro = ba.id_bairro
