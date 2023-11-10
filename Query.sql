@@ -1,0 +1,2 @@
+select c.nome, cs.cor, b.nome as bairro, crr.modelo FROM cliente c inner join casa cs on c.id_cliente = cs.fk_cliente 
+inner join bairro b on b.id_bairro = cs.fk_bairro inner join carro crr on c.id_cliente = crr.fk_cliente
