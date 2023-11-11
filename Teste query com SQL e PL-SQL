@@ -1,0 +1,58 @@
+-- INSTRUÇÃO EM SQL
+SELECT
+  c.id_cliente,
+  c.nome AS nome_cliente,
+  c.sobrenome,
+  c.data_nascimento,
+  casa.cor AS cor_casa,
+  b.nome AS nome_bairro,
+  carro.modelo AS modelo_carro
+FROM
+  cliente c
+  LEFT JOIN casa ON c.id_cliente = casa.fk_cliente
+  LEFT JOIN bairro b ON casa.fk_bairro = b.id_bairro
+  LEFT JOIN carro ON c.id_cliente = carro.fk_cliente;
+
+--INSTRUÇÃO EM PL/SQL
+DECLARE
+  v_id_cliente    cliente.id_cliente%TYPE;
+  v_nome_cliente  cliente.nome%TYPE;
+  v_sobrenome     cliente.sobrenome%TYPE;
+  v_data_nascimento cliente.data_nascimento%TYPE;
+  v_cor_casa      casa.cor%TYPE;
+  v_nome_bairro   bairro.nome%TYPE;
+  v_modelo_carro  carro.modelo%TYPE;
+BEGIN
+  FOR c IN (SELECT
+              c.id_cliente,
+              c.nome,
+              c.sobrenome,
+              c.data_nascimento,
+              casa.cor,
+              b.nome AS nome_bairro,
+              carro.modelo
+            FROM
+              cliente c
+              LEFT JOIN casa ON c.id_cliente = casa.fk_cliente
+              LEFT JOIN bairro b ON casa.fk_bairro = b.id_bairro
+              LEFT JOIN carro ON c.id_cliente = carro.fk_cliente)
+  LOOP
+    v_id_cliente := c.id_cliente;
+    v_nome_cliente := c.nome;
+    v_sobrenome := c.sobrenome;
+    v_data_nascimento := c.data_nascimento;
+    v_cor_casa := c.cor;
+    v_nome_bairro := c.nome_bairro;
+    v_modelo_carro := c.modelo;
+
+    DBMS_OUTPUT.PUT_LINE(
+          'ID Cliente: ' || v_id_cliente ||
+          ', Nome: ' || v_nome_cliente ||
+          ', Sobrenome: ' || v_sobrenome ||
+          ', Data de Nascimento: ' || TO_CHAR(v_data_nascimento, 'DD-MON-YYYY') ||
+          ', Cor da Casa: ' || v_cor_casa ||
+          ', Nome do Bairro: ' || v_nome_bairro ||
+          ', Modelo do Carro: ' || v_modelo_carro);
+  END LOOP;
+END;
+/
