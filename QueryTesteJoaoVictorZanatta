@@ -1,0 +1,15 @@
+#João Victor Zanatta Nascimento
+
+SELECT 
+	cl.id_cliente as ID_Cliente, 
+	CONCAT(cl.nome, ' ', cl.sobrenome) as Nome, 
+    cas.cor as Cor_da_casa,
+    bai.nome as Nome_do_bairro, 
+    car.modelo as Carro
+FROM cliente cl
+LEFT JOIN casa cas
+	ON cl.id_cliente = cas.fk_cliente
+LEFT JOIN carro car
+	ON cl.id_cliente = car.fk_cliente
+LEFT JOIN bairro bai
+	ON cas.fk_bairro = bai.id_bairro;
