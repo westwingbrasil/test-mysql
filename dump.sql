@@ -128,7 +128,11 @@ VALUES
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
+SELECT *
+FROM cliente AS cl
+RIGHT JOIN carro AS ca ON cl.id_cliente = ca.fk_cliente
+RIGHT JOIN casa AS c ON cl.id_cliente = c.fk_cliente
+RIGHT JOIN bairro AS b ON b.id_bairro = c.fk_bairro;
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
