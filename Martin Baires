@@ -1,0 +1,13 @@
+SELECT
+  cliente.nome,
+  cliente.cpf,
+  cliente.endereco,
+  cliente.bairro,
+  cliente.carro,
+  casa.cor
+FROM
+  cliente
+LEFT JOIN
+  casa
+ON
+  cliente.id = casa.cliente_id;
