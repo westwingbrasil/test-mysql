@@ -136,3 +136,10 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+SELECT c.nome as client_name, c.sobrenome, cs.cor as cor_casa, b.nome as nome_bairro, car.modelo as modelo_carro
+FROM cliente c
+     INNER JOIN casa cs on c.id_cliente = cs.fk_cliente
+     INNER JOIN bairro b on b.id_bairro = cs.fk_bairro
+     LEFT JOIN carro car on c.id_cliente = car.fk_cliente
+order by c.id_cliente;
