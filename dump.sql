@@ -128,7 +128,11 @@ VALUES
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
+/*Query que retorna o nome completo do cliente, a cor e o bairro de sua casa e o modelo de seu carro*/
+SELECT CONCAT(cliente.nome,' ', cliente.sobrenome) AS nomeCliente, cor AS corCasa, bairro.nome AS nomeBairro, modelo AS modeloCarro FROM cliente
+JOIN casa ON casa.fk_cliente = cliente.id_cliente
+JOIN carro ON carro.fk_cliente = cliente.id_cliente
+JOIN bairro ON casa.fk_bairro = bairro.id_bairro;
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
