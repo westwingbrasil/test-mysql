@@ -1,6 +1,6 @@
 SELECT 
 CONCAT(cliente.nome, " ", cliente.sobrenome)AS CLIENTE, 
-	   bairro.nome AS BAIRRO,
+       bairro.nome AS BAIRRO,
        carro.modelo AS CARRO,
        casa.cor AS COR_CASA 
 FROM cliente
