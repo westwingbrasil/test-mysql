@@ -136,3 +136,25 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- Query do desafio
+/*
+ * Fazer uma query que retorne o relatório abaixo:
+   Todos os clientes, cor de suas casas, seus bairros, seus carros
+*/
+SELECT c.id_cliente AS 'Id Cliente',
+       CONCAT(c.nome,' ', c.sobrenome) AS 'Nome Completo',
+       DATE_FORMAT(c.data_nascimento, '%d/%m/%Y') AS 'Data Nascimento',
+       c1.cor AS 'Cor da Casa',
+       b.id_bairro AS 'Id Bairro',
+       b.nome AS 'Nome Bairro',
+       c2.id_carro AS 'Id Carro',
+       c2.modelo AS 'Modelo Carro'
+FROM cliente c 
+INNER JOIN casa c1
+	ON c.id_cliente = c1.fk_cliente  
+INNER JOIN bairro b 
+	ON b.id_bairro = c1.fk_bairro 
+INNER JOIN carro c2 
+	ON c.id_cliente = c2.fk_cliente; 
+
