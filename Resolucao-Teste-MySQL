@@ -1,0 +1,13 @@
+-- Seleciona as colunas desejadas das tabelas cliente, casa, bairro, e carro
+SELECT
+    cliente.nome AS nome_cliente,            -- Nome do cliente
+    cliente.sobrenome,                        -- Sobrenome do cliente
+    cliente.data_nascimento,                  -- Data de nascimento do cliente
+    casa.cor AS cor_casa,                     -- Cor da casa do cliente
+    bairro.nome AS nome_bairro,               -- Nome do bairro do cliente
+    carro.modelo AS modelo_carro              -- Modelo do carro do cliente
+FROM
+    cliente
+JOIN casa ON cliente.id_cliente = casa.fk_cliente          -- Junta a tabela casa usando a chave estrangeira fk_cliente
+JOIN bairro ON casa.fk_bairro = bairro.id_bairro           -- Junta a tabela bairro usando a chave estrangeira fk_bairro
+LEFT JOIN carro ON cliente.id_cliente = carro.fk_cliente   -- Utiliza LEFT JOIN para incluir clientes mesmo que não tenham carros;
