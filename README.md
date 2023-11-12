@@ -9,6 +9,7 @@ Fazer uma query que retorne o relatório abaixo:
 
 ## Solução:
 A query que executa o relatório é a seguinte:
+
 SELECT CONCAT(cliente.nome,' ', cliente.sobrenome) AS nomeCliente, cor AS corCasa, bairro.nome AS nomeBairro, modelo AS modeloCarro FROM cliente
 JOIN casa ON casa.fk_cliente = cliente.id_cliente
 JOIN carro ON carro.fk_cliente = cliente.id_cliente
