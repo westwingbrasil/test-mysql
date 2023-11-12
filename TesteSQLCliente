@@ -1,0 +1,68 @@
+DROP TABLE IF EXISTS bairro;
+
+CREATE TABLE bairro (
+  id_bairro int NOT NULL DEFAULT '0',
+  nome varchar(255) NOT NULL,
+  PRIMARY KEY (id_bairro))
+
+INSERT INTO bairro (id_bairro, nome)
+VALUES
+	(1,'Mooca'),
+	(2,'Ipiranga'),
+	(3,'Vila Hamburguesa'),
+	(4,'Lapa'),
+	(5,'Campo Belo');
+
+DROP TABLE IF EXISTS carro;
+
+CREATE TABLE carro (
+  id_carro int NOT NULL DEFAULT '0',
+  modelo varchar(255) NOT NULL,
+  fk_cliente int NOT NULL,
+  PRIMARY KEY (id_carro))
+
+INSERT INTO carro (id_carro, modelo, fk_cliente)
+VALUES
+	(1,'Fiat',1),
+	(2,'Mercedes',2),
+	(3,'Honda',3),
+	(4,'Toyota',4),
+	(5,'Lada',1);
+
+DROP TABLE IF EXISTS casa;
+
+CREATE TABLE casa (
+  id_casa int NOT NULL DEFAULT '0',
+  cor varchar(255) NOT NULL,
+  fk_cliente int NOT NULL,
+  fk_bairro int NOT NULL,
+  PRIMARY KEY (id_casa))
+
+
+INSERT INTO casa (id_casa, cor, fk_cliente, fk_bairro)
+VALUES
+	(1,'Vermelho',1,1),
+	(2,'Roxo',2,2),
+	(3,'Azul',3,3),
+	(4,'Rosa',4,4),
+	(5,'Laranja',5,5);
+
+DROP TABLE IF EXISTS cliente;
+
+CREATE TABLE cliente (
+  id_cliente int NOT NULL DEFAULT '0',
+  nome varchar(255) NOT NULL,
+  sobrenome varchar(255) NOT NULL,
+  data_nascimento date NOT NULL,
+  PRIMARY KEY (id_cliente))
+
+
+INSERT INTO cliente (id_cliente, nome, sobrenome, data_nascimento)
+VALUES
+	(1,'Fernando','Soares','1985-04-19'),
+	(2,'Bruno','Campos','1988-06-02'),
+	(3,'Fernanda','Figo','1989-07-20'),
+	(4,'Arthur','Siqueira','1990-03-14'),
+	(5,'Joao','Garcia','1943-02-19');
+
+select cli.nome, cli.sobrenome, cas.cor, bai.nome, car.modelo from cliente as cli left join casa as cas on (cli.id_cliente = cas.fk_cliente) left join bairro as bai on (cas.fk_bairro = bai.id_bairro) left join carro as car on (cli.id_cliente = car.fk_cliente)
