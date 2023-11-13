@@ -136,3 +136,9 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+SELECT c.nome AS cliente, ca.cor AS cor_casa, b.nome AS bairro, cr.modelo AS carro
+FROM cliente AS c
+JOIN casa AS ca ON c.id_cliente = ca.fk_cliente
+JOIN bairro AS b ON ca.fk_bairro = b.id_bairro
+JOIN carro AS cr ON c.id_cliente = cr.fk_cliente;
