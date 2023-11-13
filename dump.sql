@@ -136,3 +136,15 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+/*Todos os clientes, cor de suas casas, seus bairros, seus carros*/
+SELECT
+    c.nome AS cliente_nome,
+    c.sobrenome AS cliente_sobrenome,
+    ca.cor AS cor_casa,
+    b.nome AS bairro,
+    mc.modelo AS modelo_carro
+FROM cliente c
+    LEFT JOIN casa ca ON c.id_cliente = ca.fk_cliente
+    LEFT JOIN bairro b ON ca.fk_bairro = b.id_bairro
+    LEFT JOIN carro mc ON c.id_cliente = mc.fk_cliente;
