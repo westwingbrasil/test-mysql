@@ -126,9 +126,17 @@ VALUES
 	(5,'Joao','Garcia','1943-02-19');
 
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
+UNLOCK TABLES
+select  cliente.nome,
+	cliente.id_cliente
+	carro.modelo,
+	casa.cor,
+	from cliente
+	inner join casa
+	on fk_cliente=id_cliente
+	inner join carro
+	on fk_cliente=id_cliente
+	
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
